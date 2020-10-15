@@ -11,22 +11,11 @@ public class GameObject {
 		 this.y = y;
 		 this.width = width;
 		 this.height = height;
-		 int speed = 10;
+		
 	 }
 	 void update() {
 		 
 	 }
-	 public void right() {
-	        x+=speed;
-	    }
-	 public void left() {
-	        x+=speed;
-	    }
-	 public void up() {
-	        x+=speed;
-	    }
-	 public void down() {
-	        x+=speed;
-	    }
+	 
 
 }

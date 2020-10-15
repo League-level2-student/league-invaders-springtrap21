@@ -55,6 +55,7 @@ public class GamePanel1 extends JPanel implements ActionListener, KeyListener {
 	void drawGameState(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+		rs.update();
 		rs.draw(g);
 	}
 
@@ -110,20 +111,41 @@ public class GamePanel1 extends JPanel implements ActionListener, KeyListener {
 		
 		if (arg0.getKeyCode()==KeyEvent.VK_UP) {
 		    System.out.println("UP");
+		    rs.movingUp = true;
 		}
 		if (arg0.getKeyCode()==KeyEvent.VK_DOWN) {
 		    System.out.println("DOWN");
+		    rs.movingDown = true;
 		}
 		if (arg0.getKeyCode()==KeyEvent.VK_LEFT) {
 		    System.out.println("LEFT");
+		    rs.movingLeft = true;
 		}
 		if (arg0.getKeyCode()==KeyEvent.VK_RIGHT) {
 		    System.out.println("RIGHT");
+		    rs.movingRight = true;
 		}
 	}
-
+	
+	
 	@Override
 	public void keyReleased(KeyEvent arg0) {
+		if (arg0.getKeyCode()==KeyEvent.VK_UP) {
+		    System.out.println("UP");
+		    rs.movingUp = false;
+		}
+		if (arg0.getKeyCode()==KeyEvent.VK_DOWN) {
+		    System.out.println("DOWN");
+		    rs.movingDown = false;
+		}
+		if (arg0.getKeyCode()==KeyEvent.VK_LEFT) {
+		    System.out.println("LEFT");
+		    rs.movingLeft = false;
+		}
+		if (arg0.getKeyCode()==KeyEvent.VK_RIGHT) {
+		    System.out.println("RIGHT");
+		    rs.movingRight = false;
+		}
 		// TODO Auto-generated method stub
 		
 	}
