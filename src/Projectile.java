@@ -1,16 +1,16 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Alien extends GameObject{
-	Alien(int x, int y, int width, int height) {
+public class Projectile extends GameObject{
+	Projectile(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		speed = 1;
+		speed = 10;
 	}
 	void update() {
-		y+=speed;
+		y-=speed;
 	}
 	void draw(Graphics g) {
-		  g.setColor(Color.YELLOW);
+		  g.setColor(Color.RED);
 	        g.fillRect(x, y, width, height);
 	}
 }
