@@ -1,5 +1,7 @@
+import java.awt.Rectangle;
 
 public class GameObject {
+	 Rectangle rct;
 	 int x;
 	 int y;
 	 int width;

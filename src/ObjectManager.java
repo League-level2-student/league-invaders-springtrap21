@@ -1,8 +1,10 @@
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ObjectManager {
+public class ObjectManager implements ActionListener{
 	Rocketship rs;
 	ArrayList<Projectile> pj;
 	ArrayList<Alien> al;
@@ -12,10 +14,11 @@ public class ObjectManager {
 		this.rs = rs;
 		pj = new ArrayList<Projectile>();
 		al = new ArrayList<Alien>();
+		rnd = new Random();
 	}
 
-	void addProjectile(Projectile pj) {
-
+	void addProjectile(Projectile p1) {
+		pj.add(p1);
 	}
 
 	void addAlien() {
@@ -62,5 +65,12 @@ public class ObjectManager {
 				pj.remove(pro);
 			}
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		addAlien();
+		System.out.println("Alien");
 	}
 }

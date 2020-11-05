@@ -12,7 +12,7 @@ public class Alien extends GameObject{
 		super(x, y, width, height);
 		speed = 1;
 		if (needImage) {
-		    loadImage ("rocket.png");
+		    loadImage ("alien.png");
 		}
 
 	}
@@ -23,7 +23,7 @@ public class Alien extends GameObject{
 		if (gotImage) {
 			g.drawImage(image, x, y, width, height, null);
 		} else {
-			g.setColor(Color.BLUE);
+			g.setColor(Color.RED);
 			g.fillRect(x, y, width, height);
 		}
 	}

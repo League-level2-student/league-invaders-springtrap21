@@ -12,7 +12,7 @@ public class Projectile extends GameObject{
 		super(x, y, width, height);
 		speed = 10;
 		if (needImage) {
-		    loadImage ("rocket.png");
+		    loadImage ("bullet.png");
 		}
 
 	}
@@ -23,7 +23,7 @@ public class Projectile extends GameObject{
 	        if (gotImage) {
 	        	g.drawImage(image, x, y, width, height, null);
 	        } else {
-	        	g.setColor(Color.BLUE);
+	        	g.setColor(Color.GREEN);
 	        	g.fillRect(x, y, width, height);
 	        }
 	}

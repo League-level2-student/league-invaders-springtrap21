@@ -25,7 +25,8 @@ public class GamePanel1 extends JPanel implements ActionListener, KeyListener {
 	ObjectManager om;
 	public static BufferedImage image;
 	public static boolean needImage = true;
-	public static boolean gotImage = false;		
+	public static boolean gotImage = false;
+	Timer alienSpawn;
 	
 	GamePanel1() {
 		  frameDraw = new Timer(1000/60,this);
@@ -35,7 +36,7 @@ public class GamePanel1 extends JPanel implements ActionListener, KeyListener {
 		rs = new Rocketship(250, 700, 50, 50);
 		om = new ObjectManager(rs);
 		if (needImage) {
-		    loadImage ("rocket.png");
+		    loadImage ("space.png");
 		}
 	}
 
@@ -65,10 +66,10 @@ public class GamePanel1 extends JPanel implements ActionListener, KeyListener {
 
 	void drawGameState(Graphics g) {
 		if (gotImage) {
-			g.drawImage(image, getX(), getY(), WIDTH, HEIGHT, null);
+			g.drawImage(image, 0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
 		} else {
-			g.setColor(Color.BLUE);
-			g.fillRect(getX(), getY(), WIDTH, HEIGHT);
+			g.setColor(Color.BLACK);
+			g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 		}
 		rs.update();
 		om.draw(g);
@@ -109,8 +110,7 @@ public class GamePanel1 extends JPanel implements ActionListener, KeyListener {
 		    updateGameState();
 		}else if(currentState == END){
 		    updateEndState();
-		}
-		System.out.println("action");
+		}	
 		repaint();
 	}
 
@@ -119,8 +119,13 @@ public class GamePanel1 extends JPanel implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		if (arg0.getKeyCode()==KeyEvent.VK_ENTER) {
 		    if (currentState == END) {
-		        currentState = MENU;
-		    } else {
+		        currentState = MENU;    
+		    }
+		    else if (currentState == MENU) {
+				currentState = GAME;
+				startGame();
+			}
+		    else {
 		        currentState++;
 		    }
 		}
@@ -141,6 +146,10 @@ public class GamePanel1 extends JPanel implements ActionListener, KeyListener {
 		    System.out.println("RIGHT");
 		    rs.movingRight = true;
 		}
+		if (arg0.getKeyCode()==KeyEvent.VK_SPACE && currentState == GAME) {
+			om.addProjectile(rs.getProjectile());
+		}
+		
 	}
 	
 	
@@ -181,5 +190,10 @@ public class GamePanel1 extends JPanel implements ActionListener, KeyListener {
 	        }
 	        needImage = false;
 	    }
+	}
+	void startGame() {
+		alienSpawn = new Timer(1000 , om);
+	    alienSpawn.start();
+
 	}
 }
