@@ -60,6 +60,7 @@ public class Rocketship extends GameObject{
 		if (movingLeft) {
 			left();
 		}
+		super.update();
 	}
 	void loadImage(String imageFile) {
 	    if (needImage) {
